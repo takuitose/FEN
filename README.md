@@ -28,6 +28,5 @@
 - JSライブラリ：jQuery
 - IDE：Cloud9
 ​
-## 使用素材(予定)
-- FreeLogoDesign
-- Font Awesome
+## 使用素材
+後ほど記入予定
