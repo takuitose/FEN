@@ -1,18 +1,24 @@
 <div class="container">
-  <div class="row">
+  <div class="row my-4">
 
     <div class='mx-auto col-6'>
       <h1>Fukuoka Exploler Navi</h1>
 
-      <div class="btn-wrapper col-10 mx-auto">
-        <div class="row">
-          <%= link_to "ゲストログイン（閲覧用）", members_guest_sign_in_path, class: "btn btn-secondary btn-sm btn-block mb-3 sign_in", method: :post %>
+      <div class="col-10 mx-auto">
+        <div class="row mt-4">
+          <%= link_to "ゲストログイン", members_guest_sign_in_path, class: "btn btn-secondary btn-block my-4 sign_in", method: :post %>
+          <p>
+            スポットを投稿するためには　会員登録が必要となります。<br>
+            以下より　新規登録　または　ログイン　をお願いします。
+          </p>
         </div>
-        <div class="row">
-          <%= link_to "Log in",new_member_session_path, class: "btn btn-info btn-sm btn-block mb-3 sign_in" %>
+        <div class="row mt-4">
+          <p>会員登録がお済みでない場合は、新規登録をお願いします。</p>
+          <%= link_to "Sign Up", new_member_registration_path, class: "btn btn-info btn-block my-4 sign_up" %>
         </div>
-        <div class="row">
-          <%= link_to "Sign Up",new_member_registration_path, class: "btn btn-success btn-sm btn-block sign_up" %>
+        <div class="row mt-4">
+          <P>会員登録がお済みの方は、ログインをお願いします。</P>
+          <%= link_to "Log in", new_member_session_path, class: "btn btn-info btn-block my-4 sign_in" %>
         </div>
       </div>
     </div>
