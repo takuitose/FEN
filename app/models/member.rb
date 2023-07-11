@@ -5,6 +5,8 @@ class Member < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
 
+  has_many :spots, dependent: :destroy
+
 
 
   # Add guest log_in action
