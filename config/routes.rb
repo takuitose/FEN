@@ -18,11 +18,17 @@ Rails.application.routes.draw do
   devise_scope :member do
     post 'members/guest_sign_in', to: 'members/sessions#guest'
   end
-  
-  
+
+
   scope module: :public do
     root 'homes#top'
     get  '/about' => 'homes#about'
+    get 'members/mypage' => 'members#show', as: 'mypage'
+    # members/editのようにするとdeviseのルーティングとかぶってしまうためinformationを付け加えている。
+    get 'members/information/edit' => 'members#edit', as: 'edit_information'
+    patch 'members/information' => 'members#update', as: 'update_information'
+
+    resources :spots, only: [:index, :show, :create, :edit, :update, :destroy]
   end
 
 
