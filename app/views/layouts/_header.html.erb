@@ -1,5 +1,7 @@
 <header>
   <div class="header-content">
+    
+    <%= link_to 'Fukuoka_Explorer_Navi', (admin_signed_in? ? admin_top_path : spots_path ), class: "logo" %>
 
     <ul class="flex">
       <% if admin_signed_in? %>
@@ -9,9 +11,10 @@
         <li><%= link_to 'Contact',  admin_contact_path %></li>
         <li><%= link_to 'Log out', destroy_admin_session_path, method: :delete %></li>
       <% elsif member_signed_in? %>
-        <p>ようこそ、<%= current_customer.name %>さん!</p>
+        <p>ようこそ、<%= current_member.name %>さん!</p>
         <li><%= link_to 'Log out', destroy_member_session_path, method: :delete %></li>
       <% else %>
+        <p><%= guest_sign_in? ? "ようこそ、ゲスト様" : "" %></p>
         <li><%= link_to 'Sign up', new_member_registration_path %></li>
         <li><%= link_to 'Log in', new_member_session_path %></li>
       <% end %>
