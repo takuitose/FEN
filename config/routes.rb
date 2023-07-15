@@ -7,6 +7,9 @@ Rails.application.routes.draw do
     sessions: "admin/sessions"
   }
 
+  namespace :admin do
+    resources :tags, only: [:index, :create, :edit, :update]
+  end
 
   # 顧客用
   # URL /members/sign_in ...

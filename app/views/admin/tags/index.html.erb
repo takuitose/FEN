@@ -1,0 +1,41 @@
+<section class="inner">
+	<h2 class="section-ttl">タグ管理</h2>
+
+	<div class="mb3">
+		<h3>タグ新規登録</h3>
+  	<%= render 'form', tag: @tag, url: admin_tags_path, submit: '登録' %>
+	</div>
+
+	<div class="mb3">
+		<h3>タグ一覧</h3>
+
+		<table class="has_border">
+
+			<thead>
+				<tr>
+					<th>タグ名</th>
+					<th>登録件数</th>
+					<th></th>
+				</tr>
+			</thead>
+
+			<tbody>
+				<% @tags.each do |tag| %>
+					<tr>
+						<td>
+						  <%= link_to tag.name, admin_spots_path(tag_id: tag.id), class: "underline" %>
+						</td>
+						<td>
+							<%= tag.spot.count %>件
+						</td>
+						<td class="text-center">
+						  <%= link_to "編集", edit_admin_tag_path(tag), class: "btn btn-success" %>
+						</td>
+					</tr>
+				<% end %>
+			</tbody>
+
+		</table>
+
+	</div>
+</section>
