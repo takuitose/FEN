@@ -4,7 +4,7 @@
   </div>
 
   <div class="row-8">
-    <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+    <%= form_with model: @admin, url: admin_session_path, local: true do |f| %>
       <div class="col my-4">
         <%= f.label :email %><br />
         <%= f.email_field :email, :size => "50", autofocus: true, autocomplete: "email" %>
