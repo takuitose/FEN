@@ -23,7 +23,7 @@ class Admin::TagsController < ApplicationController
     if @tag.update(tag_params)
       redirect_to admin_tags_path, notice: "You have updated tag successfully."
     else
-      render "edit"
+      render :edit
     end
   end
 

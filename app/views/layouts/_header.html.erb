@@ -14,7 +14,6 @@
         <p>ようこそ、<%= current_member.name %>さん!</p>
         <li><%= link_to 'Log out', destroy_member_session_path, method: :delete %></li>
       <% else %>
-        <p><%= guest_sign_in? ? "ようこそ、ゲスト様" : "" %></p>
         <li><%= link_to 'Sign up', new_member_registration_path %></li>
         <li><%= link_to 'Log in', new_member_session_path %></li>
       <% end %>

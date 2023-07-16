@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   }
 
   namespace :admin do
+    get 'top' => 'homes#top', as: 'top'
     resources :tags, only: [:index, :create, :edit, :update]
   end
 

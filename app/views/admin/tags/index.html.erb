@@ -23,10 +23,10 @@
 				<% @tags.each do |tag| %>
 					<tr>
 						<td>
-						  <%= link_to tag.name, admin_spots_path(tag_id: tag.id), class: "underline" %>
+						  <%= tag.name %>
 						</td>
 						<td>
-							<%= tag.spot.count %>件
+							<%= tag.spots.count %>件
 						</td>
 						<td class="text-center">
 						  <%= link_to "編集", edit_admin_tag_path(tag), class: "btn btn-success" %>
