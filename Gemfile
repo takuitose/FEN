@@ -69,3 +69,6 @@ end
 gem "net-smtp"
 gem "net-pop"
 gem "net-imap"
+
+#NameError: uninitialized constant Uglifierのため
+gem 'uglifier', '~> 4.2'
