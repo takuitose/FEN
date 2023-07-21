@@ -1,10 +1,10 @@
 <div class="row">
   <div class="col-1 bg-secondary">
-    <h1>サイドバー</h1>
+    <%= render 'sidebar' %>
   </div>
 
   <div class="col-3 bg-info">
-    <h1>フォーム</h1>
+    <%= render 'form', spot: @spot, url: new_spot_path, submit: '登録' %>
   </div>
 
   <div class="col" style="padding: 0;">

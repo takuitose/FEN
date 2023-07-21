@@ -95,6 +95,7 @@ GEM
     erubi (1.12.0)
     execjs (2.8.1)
     ffi (1.15.5)
+    geocoder (1.8.2)
     globalid (1.1.0)
       activesupport (>= 5.0)
     i18n (1.14.1)
@@ -274,6 +275,7 @@ DEPENDENCIES
   devise
   dotenv-rails
   enum_help
+  geocoder
   image_processing (~> 1.2)
   jbuilder (~> 2.7)
   jquery-rails

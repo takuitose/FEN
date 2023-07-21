@@ -32,7 +32,7 @@ Rails.application.routes.draw do
     get 'members/information/edit' => 'members#edit', as: 'edit_information'
     patch 'members/information' => 'members#update', as: 'update_information'
 
-    resources :spots, only: [:index, :show, :create, :edit, :update, :destroy]
+    resources :spots, only: [:new, :index, :show, :create, :edit, :update, :destroy]
   end
 
 

@@ -15,6 +15,31 @@
         center: new google.maps.LatLng(33.5902479, 130.4177656)
       };
       var map = new google.maps.Map(document.getElementById("map"), opts);
+
+      // マーカーを追加
+      var marker = new google.maps.Marker({
+        position: opts.center,
+        map: map,
+        title: "ここにマーカーが表示されます"
+      });
+
+      // マップクリック時に新しいマーカーを作成
+      google.maps.event.addListener(map, "click", function(event) {
+        var clickedLat = event.latLng.lat();
+        var clickedLng = event.latLng.lng();
+
+        // 新しいマーカーを作成
+        var newMarker = new google.maps.Marker({
+          position: event.latLng,
+          map: map,
+          title: "新しいマーカー"
+        });
+
+        // 新しいマーカーをクリックした際に緯度経度を表示
+        google.maps.event.addListener(newMarker, "click", function() {
+          alert("クリックされた位置の緯度: " + clickedLat + ", 経度: " + clickedLng);
+        });
+      });
     }
     </script>
 
