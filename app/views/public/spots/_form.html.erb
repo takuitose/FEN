@@ -3,36 +3,52 @@
   <div class="d-flex justify-content-center flex-column row">
     <div class="text-center"><h4>新規登録</h4></div>
 
-    <div class="text-center my-2">
-      <h4><%= f.label :image, "画像" %></h4>
-      <div>
+    <div class="text-center my-2 btn btn-secondary">
+      <p>
+        <%= f.label :image, "画像選択" %><br>
         <%= f.file_field :image,  accept:'image/*', class: "mb-2" %>
-      </div>
+      </p>
     </div>
 
     <div class="text-center my-2">
-      <h4><%= f.label :title, "タイトル" %></h4>
-      <div><%= f.text_field :title %></div>
+      <P>
+        <%= f.label :title, "タイトル" %>:
+        <%= f.text_field :title %>
+      </P>
     </div>
 
     <div class="text-center my-2">
-      <h4><%= f.label :tag_id, "タグ" %></h4>
-      <div><%= f.collection_select :tag_id, Tag.all, :id, :name %></div>
+      <p>
+        <%= f.label :tag_id, "タグ" %>:
+        <%= f.collection_select :tag_id, Tag.all, :id, :name %>
+      </p>
     </div>
 
-    <div class="text-center">
+    <div class="text-center my-2">
       <h4><%= f.label :description, "説明文" %></h4>
-      <div><%= f.text_area :description, rows: 5 %></div>
+      <div><%= f.text_area :description, rows: 7 %></div>
     </div>
 
     <div class="text-center my-2">
-      <h4><%= f.label :latitude, "緯度" %></h4>
-      <div><%#= f.text_field :latitude, id: "spot_latitude" %></div>
+      <p>
+        <%= f.label :address, "住所" %>:
+        <%= f.text_field :address, id: "spot_address" %>
+      </p>
     </div>
 
-    <div class="text-center my-2">
-      <h4><%= f.label :longitude, "経度" %></h4>
-      <div><%#= f.text_field :longitude, id: "spot_longitude" %></div>
+    <div class="text-center mt-2">
+      <p>
+        <%= f.label :latitude, "緯度", for: "spot_latitude" %>:
+        <%= f.text_field :latitude, id: "spot_latitude" %>
+      </p>
+    </div>
+
+
+    <div class="text-center mb-2">
+      <p>
+        <%= f.label :longitude, "経度", for: "spot_longitude" %>:
+        <%= f.text_field :longitude, id: "spot_longitude" %>
+      </p>
     </div>
 
     <div class="text-center my-2">

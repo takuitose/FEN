@@ -2,13 +2,20 @@
 <html lang="ja">
   <head>
     <meta charset="utf-8">
-    <title>Google Maps API サンプル</title>
+    <title>Google Maps API</title>
+    <script async defer
+      src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['GOOGLE_MAPS_API_KEY'] %>&callback=initMap">
+    </script>
   </head>
   <body>
 
     <div id="map" style="width: 100%; height: 100vh; margin: 0; padding: "></div>
 
     <script type="text/javascript">
+    // フォームのlatitudeとlongitudeフィールドを取得
+    const latitudeField = document.getElementById("spot_latitude");
+    const longitudeField = document.getElementById("spot_longitude");
+
     function initMap() {
       var opts = {
         zoom: 15,
@@ -38,9 +45,35 @@
         // 新しいマーカーをクリックした際に緯度経度を表示
         google.maps.event.addListener(newMarker, "click", function() {
           alert("クリックされた位置の緯度: " + clickedLat + ", 経度: " + clickedLng);
-        });
+
+          // フォームのlatitudeとlongitudeフィールドに値をセット
+          latitudeField.value = clickedLat;
+          longitudeField.value = clickedLng;
+
+          // 逆ジオコーディングを行う関数を呼び出す
+          reverseGeocode(clickedLat, clickedLng);
+        },  { passive: true });
       });
     }
+
+    function reverseGeocode(latitude, longitude) {
+    const geocoder = new google.maps.Geocoder();
+
+    // 緯度経度を指定して逆ジオコーディングを実行
+    geocoder.geocode({ location: { lat: latitude, lng: longitude } }, function(
+      results,
+      status
+    ) {
+      if (status === "OK" && results[0]) {
+        // 住所情報を取得してフォームのフィールドにセット
+        const address = results[0].formatted_address;
+        document.getElementById("spot_address").value = address; // 住所のフィールドにセットするIDを指定
+      } else {
+        console.log("逆ジオコーディングに失敗しました。");
+      }
+    });
+  }
+
     </script>
 
     <script async defer
