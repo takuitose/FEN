@@ -1,10 +1,8 @@
 class Public::SpotsController < ApplicationController
-  def new
-    @spot = Spot.new
-  end
+  before_action :authenticate_member!
 
   def show
-
+    @spot = Spot.find(params[:id])
   end
 
   def index
@@ -14,7 +12,8 @@ class Public::SpotsController < ApplicationController
 
   def create
     @spot = Spot.new(spot_params)
-    @spot.save ? (redirect_to spot_path(@spot)) : (redirect_to spots_path)
+    @spot.member_id = current_member.id
+    @spot.save! ? (redirect_to spot_path(@spot), notice: "You have created book successfully.") : (redirect_to spots_path)
   end
 
   def edit
@@ -22,12 +21,18 @@ class Public::SpotsController < ApplicationController
   end
 
   def update
-    @spot.update(spot_params) ? (redirect_to spot_path(@spot)) : (render :edit)
+    @spot = Spot.find(params[:id])
+    if @spot.update(spot_params)
+      redirect_to spot_path(@spot)
+    else
+      render :edit
+    end
   end
+
 
   private
 
   def spot_params
-    params.require(:spot).permit(:image, :tag_id, :title, :description, :address, :latitude, :longtude)
+    params.require(:spot).permit(:image, :tag_id, :member_id, :title, :description, :address, :latitude, :longitude)
   end
 end
