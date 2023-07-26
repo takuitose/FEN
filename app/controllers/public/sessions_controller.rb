@@ -25,10 +25,10 @@ class Public::SessionsController < Devise::SessionsController
   #   devise_parameter_sanitizer.permit(:sign_in, keys: [:attribute])
   # end
 
-  def guest
+  def guest_sign_in
     member = Member.guest
-    sign_in member        # 会員をログインさせる
-    redirect_to root_path, notice: 'ゲストユーザーでログインしました。'
+    sign_in member
+    redirect_to root_path, notice: 'ゲストユーザーとしてログインしました。'
   end
 
   def after_sign_in_path_for(resource)

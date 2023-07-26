@@ -1,4 +1,6 @@
 class Public::MembersController < ApplicationController
+  before_action :authenticate_member!
+  before_action :ensure_guest_member, only: [:edit, :update]
 
   def show
     @spots = Spot.order(id: :desc).limit(3)
@@ -23,4 +25,10 @@ class Public::MembersController < ApplicationController
     params.require(:member).permit(:name, :email)
   end
 
+  def ensure_guest_member
+    @member = Member.find_by(id: params[:id])
+    if @member && @member.email == 'guest@fukuoka.com'
+      redirect_to mypage_path, alert: "ゲストユーザーはプロフィール編集画面へ遷移できません。"
+    end
+  end
 end
