@@ -1,0 +1,33 @@
+<div class="container">
+  <div class="row">
+
+    <div class="col-10">
+      <div class="row">
+        <h3 class="mr-5">My Page</h3>
+        <p class="mx-5">Name: <%= current_member.name %></p>
+        <p class="mx-5">MemberID: <%= current_member.id %></p>
+        <div><%= link_to "Edit", edit_information_path, class: "btn btn-success" %></div>
+      </div>
+
+      <div class="row">
+        <% @spots.each do |spot| %>
+          <%= link_to spot_path(spot) do %>
+          <div class="card" style="width: 18rem;">
+            <%= image_tag spot.get_image, class: "card-image-top", style: "padding: 5px;" %>
+              <div class="card-body">
+                <h5 class="card-title"><%= spot.title %> (<%= spot.tag.name %>)</h5>
+                <p class="card-text"></p>
+              </div>
+          </div>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
+
+    <div class="col-2">
+
+    </div>
+
+  </div>
+
+</div>

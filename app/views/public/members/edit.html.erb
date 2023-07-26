@@ -2,7 +2,7 @@
   <h2>MEMBER EDIT</h2>
 
   <div class="row">
-    <%= form_with model:@member,  url: update_information_path do |f| %>
+    <%= form_with model:@member,  url: update_information_path, method: :patch do |f| %>
 
     <table class="table table-borderless">
       <thead>
@@ -14,15 +14,20 @@
       <tbody>
         <tr>
           <th>Name</th>
-          <td colspan="2"><%= f.text_field :title, :placeholder =>"#{@member.name:}" %></td>
+          <td colspan="2"><%= f.text_field :name, :placeholder =>"#{@member.name}" %></td>
         </tr>
         <tr>
-          <th>Name</th>
-          <td colspan="2"><%= f.text_field :, :placeholder =>"#{@member.name:}" %></td>
+          <th>MailAddress</th>
+          <td colspan="2"><%= f.text_field :email, :placeholder =>"#{@member.email}" %></td>
         </tr>
       </tbody>
 
     </table>
+
+    <div class="text-center my-2 ml-4">
+      <%= f.submit "編集内容を保存する", class: "btn btn-success" %>
+    </div>
+
     <% end %>
   </div>
 
