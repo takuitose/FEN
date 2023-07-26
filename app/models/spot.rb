@@ -1,6 +1,7 @@
 class Spot < ApplicationRecord
   belongs_to :member
   belongs_to :tag
+  has_many :favorites
 
   has_one_attached :image
 

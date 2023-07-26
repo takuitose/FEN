@@ -6,6 +6,7 @@ class Member < ApplicationRecord
 
 
   has_many :spots, dependent: :destroy
+  has_many :favorites, dependent: :destroy
 
   GUEST_MEMBER_NAME = 'GuestMember'
   GUEST_MEMBER_EMAIL =  'guest@fukuoka.com'

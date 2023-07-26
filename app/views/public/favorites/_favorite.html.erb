@@ -1,0 +1,15 @@
+<% unless current_member.guest_member? %>
+
+  <% if spot.favorited_by?(current_user) %>
+    <%= link_to spot_favorites_path(spot), method: :delete, remote: true, data: {"turbolinks" => false} do %>
+      <i class="fas fa-heart" aria-hidden="true" style="color: red;"></i>
+      <%= spot.favorites.count %>
+    <% end %>
+  <% else %>
+    <%= link_to spot_favorites_path(spot), method: :post, remote: true, data: {"turbolinks" => false} do %>
+      <i class="fas fa-heart" aria-hidden="true"></i>
+      <%= spot.favorites.count %>
+    <% end %>
+  <% end %>
+
+<% end %>

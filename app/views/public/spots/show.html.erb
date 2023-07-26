@@ -20,6 +20,7 @@
             <h4>
               Title:<%= @spot.title %><br>
               Tag:<%= @spot.tag.name %>
+              <%= render "favorites/favorite", spot: @spot %>
             </h4>
           </div>
 
