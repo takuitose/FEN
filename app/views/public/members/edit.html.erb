@@ -1,0 +1,29 @@
+<div class="container">
+  <h2>MEMBER EDIT</h2>
+
+  <div class="row">
+    <%= form_with model:@member,  url: update_information_path do |f| %>
+
+    <table class="table table-borderless">
+      <thead>
+        <th></th>
+        <th></th>
+        <th></th>
+      </thead>
+
+      <tbody>
+        <tr>
+          <th>Name</th>
+          <td colspan="2"><%= f.text_field :title, :placeholder =>"#{@member.name:}" %></td>
+        </tr>
+        <tr>
+          <th>Name</th>
+          <td colspan="2"><%= f.text_field :, :placeholder =>"#{@member.name:}" %></td>
+        </tr>
+      </tbody>
+
+    </table>
+    <% end %>
+  </div>
+
+</div>

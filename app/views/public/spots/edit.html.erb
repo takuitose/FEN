@@ -1,0 +1,54 @@
+<div class="container">
+  <h2 class="my-2"><%= @spot.title %>の編集</h2>
+
+  <div class="justify-content-center row">
+    <div class="justify-content-center my-2 ml-2 col-6">
+      <%= image_tag @spot.get_image, style: "width: 100%; height: auto; padding: 5px;" %>
+    </div>
+
+    <div class="col"></div>
+
+    <div class="col-5">
+      <%= form_with model:@spot,  url: spot_path(@spot) do |f| %>
+      <div class="text-center my-2 ml-4 btn btn-secondary">
+        <p>
+          <%= f.label :image, "画像選択" %><br>
+          <%= f.file_field :image,  accept:'image/*', class: "mb-2" %>
+        </p>
+      </div>
+      <div class="text-center">
+        <p>※画像未選択の場合は、「画像準備中」になります。</p>
+      </div>
+
+      <table class="table table-borderless">
+        <thead>
+          <th></th>
+          <th></th>
+          <th></th>
+        </thead>
+
+        <tbody>
+          <tr>
+            <th>Title</th>
+            <td colspan="2"><%= f.text_field :title, :placeholder =>"#{@spot.title}" %></td>
+          </tr>
+          <tr>
+            <th>Tag</th>
+            <td colspan="2"><%= f.collection_select :tag_id, Tag.all, :id, :name %></td>
+          </tr>
+          <tr>
+            <th>Recommendation</th>
+            <td colspan="2"><%= f.text_area :description, :placeholder =>"#{@spot.description}", rows: 7 %></td>
+          </tr>
+        </tbody>
+
+      </table>
+
+      <div class="text-center my-2 ml-4">
+        <%= f.submit "編集内容を保存する", class: "btn btn-success" %>
+      </div>
+      <% end %>
+    </div>
+
+  </div>
+</div>

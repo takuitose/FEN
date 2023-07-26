@@ -17,7 +17,7 @@ class Public::SpotsController < ApplicationController
   end
 
   def edit
-
+    @spot = Spot.find(params[:id])
   end
 
   def update
