@@ -1,7 +1,7 @@
 class Spot < ApplicationRecord
   belongs_to :member
   belongs_to :tag
-  has_many :favorites
+  has_many :favorites, dependent: :destroy
 
   has_one_attached :image
 
@@ -17,6 +17,11 @@ class Spot < ApplicationRecord
       image
     end
   end
+
+  def favorited_by?(member)
+    favorites.where(member_id: member.id).exists?
+  end
+
 
   def current_position
     #現在地を返す

@@ -33,7 +33,7 @@ Rails.application.routes.draw do
     patch 'members/information' => 'members#update', as: 'update_information'
 
     resources :spots, only: [:new, :index, :show, :create, :edit, :update, :destroy] do
-      resources :favorites, only: [:create, :destroy]
+      resource :favorites, only: [:create, :destroy]
     end
   end
 end

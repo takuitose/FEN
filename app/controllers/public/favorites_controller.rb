@@ -3,14 +3,14 @@ class Public::FavoritesController < ApplicationController
 
   def create
     @spot = Spot.find(params[:spot_id])
-    current_member.likes.create(spot: @spot)
-    redirect_to @spot, notice: 'いいねしました。'
+    favorite = @spot.favorites.new(member_id: current_member.id)
+    favorite.save
   end
 
   def destroy
     @spot = Spot.find(params[:spot_id])
-    current_member.likes.find_by(spot: @spot).destroy
-    redirect_to @spot, notice: 'いいねを取り消しました。'
+    favorite = current_member.favorites.find_by(spot_id: @spot.id)
+    favorite.destroy
   end
 
 end

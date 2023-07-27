@@ -20,7 +20,6 @@
             <h4>
               Title:<%= @spot.title %><br>
               Tag:<%= @spot.tag.name %>
-              <%= render "favorites/favorite", spot: @spot %>
             </h4>
           </div>
 
@@ -33,11 +32,17 @@
             <%= link_to "Edit", edit_spot_path, class: "btn btn-success" %>
           </div>
 
-          <div class="row">
+          <div class="row my-2">
             <p>address: <%= @spot.address %></p>
           </div>
 
-          <div class="row">
+          <div class="row my-2" id="favorite_buttons_<%= @spot.id %>">
+            <div class="col-2">
+              <%= render "public/favorites/favorite", spot: @spot %>
+            </div>
+          </div>
+
+          <div class="row my-2">
             <p><%= @spot.created_at %></p>
           </div>
 

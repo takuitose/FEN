@@ -1,1 +1,1 @@
-$('#favorite_buttons_<%= @spot.id %>').html("<%= j(render "favorites/favorite", book: @spot) %>");
+$('#favorite_buttons_<%= @spot.id %>').html("<%= j(render "public/favorites/favorite", spot: @spot) %>");

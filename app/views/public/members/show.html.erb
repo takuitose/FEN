@@ -15,10 +15,14 @@
         <% @spots.each do |spot| %>
           <%= link_to spot_path(spot) do %>
           <div class="card mx-2" style="width: 18rem;">
-            <%= image_tag spot.get_image, class: "card-image-top", style: "padding: 5px; height: 250px;" %>
+            <%= image_tag spot.get_image, class: "card-image-top justify-cotent-center", style: "padding: 5px; width: 288px; height: 250px;" %>
               <div class="card-body">
                 <h5 class="card-title"><%= spot.title %> (<%= spot.tag.name %>)</h5>
-                <p class="card-text"></p>
+              </div>
+              <div class="text-center" id="favorite_buttons_<%= spot.id %>">
+                <p class="card-text my-2">
+                  <%= render "public/favorites/favorite", spot: spot %>
+                </p>
               </div>
           </div>
           <% end %>
