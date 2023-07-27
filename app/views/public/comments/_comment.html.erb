@@ -1,0 +1,14 @@
+<div class="mb-2">
+  <%= form_with model: [spot, comment] do |f| %>
+    <%= f.text_area :comment, rows: '5', placeholder: "コメントをここに", style: "width: 100%;" %><br>
+    <%= f.submit "コメントする" %>
+  <% end %>
+</div>
+
+<div class="my-4">
+  <% spot.comments.each do |comment| %>
+    <%= comment.member.name %>
+    <%= comment.created_at.strftime('%Y/%m/%d') %>
+    <p><%= comment.comment %></p>
+  <% end %>
+</div>

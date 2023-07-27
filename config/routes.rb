@@ -34,6 +34,7 @@ Rails.application.routes.draw do
 
     resources :spots, only: [:new, :index, :show, :create, :edit, :update, :destroy] do
       resource :favorites, only: [:create, :destroy]
+      resources :comments, only: [:create, :destroy]
     end
   end
 end

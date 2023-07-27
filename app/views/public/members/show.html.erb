@@ -24,6 +24,9 @@
                   <%= render "public/favorites/favorite", spot: spot %>
                 </p>
               </div>
+              <div class="text-center">
+                <p>コメント数: <%= spot.comments.count %></p>
+              </div>
           </div>
           <% end %>
         <% end %>

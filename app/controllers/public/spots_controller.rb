@@ -3,6 +3,7 @@ class Public::SpotsController < ApplicationController
 
   def show
     @spot = Spot.find(params[:id])
+    @comment = Comment.new
   end
 
   def index

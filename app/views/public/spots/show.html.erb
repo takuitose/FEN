@@ -4,13 +4,13 @@
     <div class="col-8">
       <div class="row">
 
-        <div class="col-6 justify-content-center my-2 ml-2">
+        <div class="col-6 justify-content-center my-4 ml-2">
           <%= image_tag @spot.get_image, style: "width: 100%; height: 300px; padding: 5px;" %>
         </div>
 
         <div class="col"></div>
 
-        <div class="col-5">
+        <div class="col-5 my-4">
 
           <div class="row my-2">
             <h4>Member Name: <%= @spot.member.name %></h4>
@@ -23,12 +23,12 @@
             </h4>
           </div>
 
-          <div class="d-flex flex-column row my-2", style="height: 200px;" >
+          <div class="d-flex flex-column row my-2" >
             <h4>Recommendation</h4>
-            <p><%= @spot.description %></p>
+            <p style="height: 200px; width: 100%; border: 1px solid;"><%= @spot.description %></p>
           </div>
 
-          <div class="justify-content-center row">
+          <div class="justify-content-end row">
             <%= link_to "Edit", edit_spot_path, class: "btn btn-success" %>
           </div>
 
@@ -36,9 +36,10 @@
             <p>address: <%= @spot.address %></p>
           </div>
 
-          <div class="row my-2" id="favorite_buttons_<%= @spot.id %>">
-            <div class="col-2">
-              <%= render "public/favorites/favorite", spot: @spot %>
+          <div class="justify-content-between row my-2" id="favorite_buttons_<%= @spot.id %>">
+            <div class="col">
+              <p><%= render "public/favorites/favorite", spot: @spot %></p>
+              <p>コメント数:<%= @spot.comments.count %></p>
             </div>
           </div>
 
@@ -51,8 +52,8 @@
       </div>
     </div>
 
-    <div class="col-4">
-
+    <div class="col-4 my-4">
+      <%= render "public/comments/comment", spot: @spot, comment: @comment %>
     </div>
 
   </div>

@@ -2,18 +2,20 @@
 
   <% if spot.favorited_by?(current_member) %>
     <div>
-      <%= link_to spot_favorites_path(spot), method: :delete, remote: true, data: {"turbolinks" => false} do %>
-        <i class="fas fa-heart" aria-hidden="true" style="color: red;"></i>:
-        <%= spot.favorites.count %>
-      <% end %>
+      <p>
+        <%= link_to spot_favorites_path(spot), method: :delete, remote: true, data: {"turbolinks" => false} do %>
+          <i class="fas fa-heart" aria-hidden="true" style="color: red;"></i>:<%= spot.favorites.count %>
+        <% end %>
+      </p>
     </div>
 
   <% else %>
     <div>
-      <%= link_to spot_favorites_path(spot), method: :post, remote: true, data: {"turbolinks" => false} do %>
-        <i class="fas fa-heart" aria-hidden="true"></i>:
-        <%= spot.favorites.count %>
-    <% end %>
+      <p>
+        <%= link_to spot_favorites_path(spot), method: :post, remote: true, data: {"turbolinks" => false} do %>
+          <i class="fas fa-heart" aria-hidden="true"></i>:<%= spot.favorites.count %>
+        <% end %>
+      </p>
     </div>
   <% end %>
 
