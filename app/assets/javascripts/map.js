@@ -1,4 +1,4 @@
-//application.js
+
 /*global google*/
 
 document.addEventListener("DOMContentLoaded", function() {

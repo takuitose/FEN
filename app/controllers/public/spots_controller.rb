@@ -14,7 +14,7 @@ class Public::SpotsController < ApplicationController
   def create
     @spot = Spot.new(spot_params)
     @spot.member_id = current_member.id
-    @spot.save! ? (redirect_to spot_path(@spot), notice: "You have created book successfully.") : (redirect_to spots_path)
+    @spot.save! ? (redirect_to spot_path(@spot)) : (redirect_to spots_path)
   end
 
   def edit

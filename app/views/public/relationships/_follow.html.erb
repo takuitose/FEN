@@ -1,0 +1,25 @@
+<div>
+  <h5>
+    Follows:
+    <%= link_to member_followings_path(member) do %>
+      <%= member.followings.count %>人
+    <% end %>
+  </h5>
+</div>
+
+<div>
+  <h5>
+    Followers:
+    <%= link_to member_followers_path(member) do %>
+      <%= member.followers.count %>人
+    <% end %>
+  </h5>
+</div>
+
+<% if current_member != member %>
+  <% if current_member.following?(member) %>
+    <%= link_to "フォロー外す", member_relationships_path(member.id), method: :delete, class: "btn btn-info" %>
+  <% else %>
+    <%= link_to "フォローする", member_relationships_path(member.id), method: :post, class: "btn btn-success" %>
+  <% end %>
+<% end %>

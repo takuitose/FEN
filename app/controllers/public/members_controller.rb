@@ -3,7 +3,8 @@ class Public::MembersController < ApplicationController
   before_action :ensure_guest_member, only: [:edit, :update]
 
   def show
-    @spots = Spot.order(id: :desc).limit(3)
+    @member = Member.find(params[:id])
+    @spots = @member.spots.order(id: :desc).limit(3)
   end
 
   def edit

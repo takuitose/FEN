@@ -27,7 +27,6 @@ Rails.application.routes.draw do
   scope module: :public do
     root 'homes#top'
     get  '/about' => 'homes#about'
-    get 'members/mypage' => 'members#show', as: 'mypage'
     # members/editのようにするとdeviseのルーティングとかぶってしまうためinformationを付け加えている。
     get 'members/information/edit' => 'members#edit', as: 'edit_information'
     patch 'members/information' => 'members#update', as: 'update_information'
@@ -35,6 +34,12 @@ Rails.application.routes.draw do
     resources :spots, only: [:new, :index, :show, :create, :edit, :update, :destroy] do
       resource :favorites, only: [:create, :destroy]
       resources :comments, only: [:create, :destroy]
+    end
+
+    resources :members, only: [:index, :show] do
+      resource :relationships, only: [:create, :destroy]
+      get 'followings' => 'relationships#followings', as: 'followings'
+      get 'followers' => 'relationships#followers', as: 'followers'
     end
   end
 end
