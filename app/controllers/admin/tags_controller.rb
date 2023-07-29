@@ -1,4 +1,7 @@
 class Admin::TagsController < ApplicationController
+  before_action :authenticate_admin!
+  before_action :ensure_tag, only: [:show, :edit, :update]
+
   def index
     @tag = Tag.new
     @tags = Tag.all
@@ -33,4 +36,7 @@ class Admin::TagsController < ApplicationController
     params.require(:tag).permit(:name)
   end
 
+  def ensure_tag
+    @genre = Genre.find(params[:id])
+  end
 end

@@ -1,23 +1,12 @@
-class Public::SpotsController < ApplicationController
-  before_action :authenticate_member!
+class Admin::SpotsController < ApplicationController
+  before_action :authenticate_admin!
 
-  def new
-    @spot = Spot.new
+  def index
+    @spots = Spot.all
   end
 
   def show
     @spot = Spot.find(params[:id])
-    @comment = Comment.new
-  end
-
-  def index
-    @spots =Spot.page(params[:page])
-  end
-
-  def create
-    @spot = Spot.new(spot_params)
-    @spot.member_id = current_member.id
-    @spot.save! ? (redirect_to spot_path(@spot)) : (redirect_to spots_path)
   end
 
   def edit

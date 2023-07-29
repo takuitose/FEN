@@ -14,7 +14,7 @@
         <td class="align-middle"><%= spot.tag.name %></td>
         <td class="align-middle"><%= spot.member.name %></td>
         <td class="align-middle"><%= spot.address %></td>
-        <td class="align-middle"><%= link_to "show", spot_path(spot.id), class: "btn btn-success" %></td>
+        <td class="align-middle"><%= link_to "show", admin_spot_path(spot.id), class: "btn btn-success" %></td>
       </tr>
     <% end %>
   </tbody>

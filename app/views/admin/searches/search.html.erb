@@ -1,0 +1,9 @@
+<% if admin_signed_in? %>
+  <% if @range == 'Member' %>
+  	<h3>Members search for "<%= @word %>"</h3>
+    <%= render 'admin/members/index', members: @members %>
+  <% elsif @range == 'Spot' %>
+  	<h3>Spots search for "<%= @word %>"</h3>
+    <%= render 'admin/spots/index', spots: @spots %>
+  <% end %>
+<% end %>

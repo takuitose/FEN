@@ -6,6 +6,8 @@ class Spot < ApplicationRecord
 
   has_one_attached :image
 
+  scope :spot_today, -> { where(created_at: Time.current.at_beginning_of_day..Time.current.at_end_of_day) }
+
   def get_image(*size)
     unless image.attached?
       file_path = Rails.root.join('app/assets/images/no-image.png')

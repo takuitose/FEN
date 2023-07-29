@@ -10,12 +10,20 @@ Admin.create!(
   password: "fukuoka"
 )
 
-Member.create(
+Member.create!(
   [
   { name: "博多", email: "hakata@fukuoka", password: "hakata"},
   { name: "西鉄", email: "nishitetu@fukuoka", password: "nishitetu"},
   { name: "太宰府", email: "dazaifu@fukuoka", password: "dazaifu"},
   { name: "大名", email: "daimyo@fukuoka", password: "daimyo"},
   { name: "西新", email: "nishijin@fukuoka", password: "nishijin"}
+  ]
+  )
+
+Tag.create!(
+  [
+  { name: "Food" },
+  { name: "観光名所" },
+  { name: "公園" }
   ]
   )

@@ -15,6 +15,10 @@ class Member < ApplicationRecord
   has_many :relationships, class_name: "Relationship", foreign_key: "follower_id", dependent: :destroy
   has_many :followings, through: :relationships, source: :followed
 
+  enum status: {active: 0, disabled: 1}
+
+  scope :member_today, -> { where(created_at: Time.current.at_beginning_of_day..Time.current.at_end_of_day) }
+
   GUEST_MEMBER_NAME = 'GuestMember'
   GUEST_MEMBER_EMAIL =  'guest@fukuoka.com'
 

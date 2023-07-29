@@ -1,5 +1,5 @@
-<table>
-  <thead>
+<table class="table">
+  <thead class="bg-light">
     <th>Name</th>
     <th>Spots</th>
     <th>Follower</th>
@@ -8,10 +8,10 @@
   <tbody>
     <% members.each do |member| %>
       <tr>
-        <td><%= member.name %></td>
-        <td><%= member.spots.count %></td>
-        <td><%= member.followers.count %></td>
-        <td><%= link_to "show", member_path(member.id), class: "btn btn-success" %></td>
+        <td class="align-middle"><%= member.name %></td>
+        <td class="align-middle"><%= member.spots.count %></td>
+        <td class="align-middle"><%= member.followers.count %></td>
+        <td class="align-middle"><%= link_to "show", member_path(member.id), class: "btn btn-success" %></td>
       </tr>
     <% end %>
   </tbody>

@@ -9,7 +9,10 @@ Rails.application.routes.draw do
 
   namespace :admin do
     get 'top' => 'homes#top', as: 'top'
+    get 'search' => 'searches#search', as: 'search'
+    resources :members, only: [:index, :show, :update]
     resources :tags, only: [:index, :create, :edit, :update]
+    resources :spots, only: [:index, :show, :update]
   end
 
   # 顧客用

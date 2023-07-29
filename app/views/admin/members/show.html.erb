@@ -1,0 +1,65 @@
+<div class="container">
+  <div class="row">
+
+    <div class="col-10">
+      <div class="row my-4">
+        <h3 class="mr-5">Member Page</h3>
+        <p class="mx-5">
+          Name: <%= @member.name %><br>
+          Mail-address: <%= @member.email %>
+        </p>
+        <p class="mx-5">MemberID: <%= @member.id %></p>
+      </div>
+
+      <div class="row">
+        <% @spots.each do |spot| %>
+          <%= link_to spot_path(spot) do %>
+          <div class="card mx-2" style="width: 18rem;">
+            <%= image_tag spot.get_image, class: "card-image-top justify-cotent-center", style: "padding: 5px; width: 288px; height: 250px;" %>
+              <div class="card-body">
+                <h5 class="card-title"><%= spot.title %> (<%= spot.tag.name %>)</h5>
+              </div>
+              <div class="text-center" id="favorite_buttons_<%= spot.id %>">
+                <p class="card-text my-2">
+                  Good: <%= spot.favorites.count %>
+                </p>
+              </div>
+              <div class="text-center">
+                <p>コメント数: <%= spot.comments.count %></p>
+              </div>
+          </div>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
+
+    <div class="col-2 my-4">
+      <div>
+        <h5>
+          Follows:
+          <%= link_to member_followings_path(@member) do %>
+            <%= @member.followings.count %>人
+          <% end %>
+        </h5>
+      </div>
+
+      <div>
+        <h5>
+          Followers:
+          <%= link_to member_followers_path(@member) do %>
+            <%= @member.followers.count %>人
+          <% end %>
+        </h5>
+      </div>
+
+      <div>
+        <%= form_with model:@member, url: admin_member_path(@member) do |f| %>
+					<%= f.select :status, Member.statuses.keys.map {|k| [I18n.t("enums.member.status.#{k}"), k]} %>
+					<%= f.submit "更新", class: "btn btn-primary" %>
+				<% end %>
+      </div>
+    </div>
+
+  </div>
+
+</div>

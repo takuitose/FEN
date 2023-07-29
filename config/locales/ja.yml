@@ -1,0 +1,6 @@
+ja:
+  enums:
+    member:
+      status:
+        active: '有効会員'
+        disabled: '利用停止中'

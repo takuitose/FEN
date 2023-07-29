@@ -41,7 +41,7 @@
 
         // 新しいマーカーをクリックした際に緯度経度を表示
         google.maps.event.addListener(newMarker, "click", function() {
-          alert("クリックされた位置の緯度: " + clickedLat + ", 経度: " + clickedLng);
+          alert("クリックされた位置の緯度: " + clickedLat + ", 経度: " + clickedLng );
 
           // フォームのlatitudeとlongitudeフィールドに値をセット
           latitudeField.value = clickedLat;
