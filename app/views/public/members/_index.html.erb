@@ -1,0 +1,18 @@
+<table>
+  <thead>
+    <th>Name</th>
+    <th>Spots</th>
+    <th>Follower</th>
+    <th></th>
+  </thead>
+  <tbody>
+    <% members.each do |member| %>
+      <tr>
+        <td><%= member.name %></td>
+        <td><%= member.spots.count %></td>
+        <td><%= member.followers.count %></td>
+        <td><%= link_to "show", member_path(member.id), class: "btn btn-success" %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

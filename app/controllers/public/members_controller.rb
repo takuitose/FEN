@@ -2,6 +2,10 @@ class Public::MembersController < ApplicationController
   before_action :authenticate_member!
   before_action :ensure_guest_member, only: [:edit, :update]
 
+  def index
+    @members = Member.all
+  end
+
   def show
     @member = Member.find(params[:id])
     @spots = @member.spots.order(id: :desc).limit(3)

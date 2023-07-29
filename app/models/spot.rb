@@ -23,6 +23,15 @@ class Spot < ApplicationRecord
     favorites.where(member_id: member.id).exists?
   end
 
+  def self.looks(search, word)
+    if search == "perfect_match"
+      @spot = Spot.joins(:tag).where("title LIKE?", "#{word}")
+    elsif search == "partial_match"
+      @spot = Spot.joins(:tag).where("title LIKE?","%#{word}%")
+    else
+      @spot = Spot.all
+    end
+  end
 
   def current_position
     #現在地を返す

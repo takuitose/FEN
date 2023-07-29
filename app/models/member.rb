@@ -41,4 +41,13 @@ class Member < ApplicationRecord
     followings.include?(user_id)
   end
 
+  def self.looks(search, word)
+    if search == "perfect_match"
+      @member = Member.where("name LIKE?", "#{word}")
+    elsif search == "partial_match"
+      @member = Member.where("name LIKE?","%#{word}%")
+    else
+      @member = Member.all
+    end
+  end
 end

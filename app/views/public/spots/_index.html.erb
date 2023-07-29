@@ -1,0 +1,21 @@
+<table>
+  <thead>
+    <th>Title</th>
+    <th>Tag</th>
+    <th>Name</th>
+    <th>Address</th>
+    <th></th>
+  </thead>
+
+  <tbody>
+    <% spots.each do |spot| %>
+      <tr>
+        <td><%= spot.title %></td>
+        <td><%= spot.tag.name %></td>
+        <td><%= spot.member.name %></td>
+        <td><%= spot.address %></td>
+        <td><%= link_to "show", spot_path(spot.id), class: "btn btn-success" %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

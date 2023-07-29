@@ -30,6 +30,7 @@ Rails.application.routes.draw do
     # members/editのようにするとdeviseのルーティングとかぶってしまうためinformationを付け加えている。
     get 'members/information/edit' => 'members#edit', as: 'edit_information'
     patch 'members/information' => 'members#update', as: 'update_information'
+    get "search" => "searches#search"
 
     resources :spots, only: [:new, :index, :show, :create, :edit, :update, :destroy] do
       resource :favorites, only: [:create, :destroy]

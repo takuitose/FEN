@@ -1,14 +1,17 @@
 class Public::SpotsController < ApplicationController
   before_action :authenticate_member!
 
+  def new
+    @spot = Spot.new
+  end
+
   def show
     @spot = Spot.find(params[:id])
     @comment = Comment.new
   end
 
   def index
-    @spot = Spot.new
-    @spots = Spot.all
+    @spots =Spot.all
   end
 
   def create
