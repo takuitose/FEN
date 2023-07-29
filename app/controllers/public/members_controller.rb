@@ -18,7 +18,7 @@ class Public::MembersController < ApplicationController
   def update
     @member = current_member
     if @member.update(member_params)
-      redirect_to mypage_path, notice: '会員情報の更新が完了しました。'
+      redirect_to member_path(@member), notice: '会員情報の更新が完了しました。'
     else
       render :edit
     end
