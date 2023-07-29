@@ -23,7 +23,9 @@ Rails.application.routes.draw do
   }
 
   # guest用
-  post 'public/guest_sign_in', to: 'public/sessions#guest_sign_in', as: 'public_guest_sign_in'
+  devise_scope :member do
+  post 'members/guest_sign_in', to: 'public/sessions#guest_sign_in'
+  end
 
   scope module: :public do
     root 'homes#top'
