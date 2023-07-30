@@ -45,7 +45,7 @@ class Public::RegistrationsController < Devise::RegistrationsController
   #   devise_parameter_sanitizer.permit(:sign_up, keys: [:attribute])
   # end
   def configure_sign_up_params
-    devise_parameter_sanitizer.permit(:sign_up, keys: [:name])
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:lastname])
   end
 
   # If you have extra params to permit, append them to the sanitizer.
@@ -55,7 +55,7 @@ class Public::RegistrationsController < Devise::RegistrationsController
 
   # The path used after sign up.
   def after_sign_up_path_for(resource)
-    member_path(@member)
+    about_path
   end
 
   # The path used after sign up for inactive accounts.
