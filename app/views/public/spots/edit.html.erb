@@ -1,4 +1,7 @@
 <div class="container">
+  <% if flash.now[:alert] %>
+    <div class="alert alert-success"><%= alert %></div>
+  <% end %>
   <h2 class="my-2"><%= @spot.title %>の編集</h2>
 
   <div class="row">
