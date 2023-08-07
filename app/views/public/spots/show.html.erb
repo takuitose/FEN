@@ -1,4 +1,5 @@
 <div class="container">
+  <p><%= notice %></p>
   <div class="row">
 
     <div class="col-8">
@@ -6,11 +7,6 @@
 
         <div class="col-6 justify-content-center my-4 ml-2">
           <%= image_tag @spot.get_image, style: "width: 100%; height: 300px; padding: 5px;" %>
-          <div class="justify-content-center my-4">
-            <% @spot.genres.each do |genre| %>
-              <span class="label"><%= genre.name %></span>
-            <% end %>
-          </div>
         </div>
 
         <div class="col"></div>

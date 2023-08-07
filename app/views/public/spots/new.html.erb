@@ -1,9 +1,20 @@
+
 <div class="row">
-  <div class="col-3 bg-info">
+  <div class="col-1"></div>
+
+  <div class="col-3 my-2">
+    <% if flash.now[:alert] %>
+      <div class="alert alert-success"><%= alert %></div>
+    <% end %>
     <%= render 'form', spot: @spot, url: spots_path %>
   </div>
 
-  <div class="col" style="padding: 0;">
+
+
+  <div class="col-7 my-2">
     <%= render 'map' %>
   </div>
+
+  <div class="col-1"></div>
 </div>
+

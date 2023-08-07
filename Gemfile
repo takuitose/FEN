@@ -63,6 +63,8 @@ gem 'enum_help'
 gem 'geocoder'
 gem 'ransack'
 
+gem 'google-cloud-vision'
+
 gem 'dotenv-rails'
 group :production do
   gem 'mysql2'

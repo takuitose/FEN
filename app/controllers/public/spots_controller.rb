@@ -16,15 +16,27 @@ class Public::SpotsController < ApplicationController
 
   def create
     @spot = Spot.new(spot_params)
-    genres = Vision.get_image_data(spot_params[:image])
     @spot.member_id = current_member.id
-    if @spot.save
-      genres.each do |genre|
-        @spot.genres.create(name: genre)
+    if spot_params[:image].present?
+       result = Vision.image_analysis(spot_params[:image])
+      if result
+        if @spot.save
+          redirect_to spot_path(@spot), notice: "ありがとうございます。情報のシェアに成功しました。"
+        else
+          flash.now[:alert] = "情報のシェアに失敗しました。"
+          render :new
+        end
+      else
+        flash.now[:alert] = "画像が不適切です。"
+        render :new
       end
-      redirect_to spot_path(@spot)
     else
-      render :new
+       if @spot.save
+          redirect_to spot_path(@spot), notice: "ありがとうございます。情報のシェアに成功しました。"
+       else
+          flash.now[:alert] = "必須項目を入力してください。"
+          render :new
+       end
     end
   end
 
@@ -34,10 +46,26 @@ class Public::SpotsController < ApplicationController
 
   def update
     @spot = Spot.find(params[:id])
-    if @spot.update(spot_params)
-      redirect_to spot_path(@spot)
+    if spot_params[:image].present?
+      result = Vision.image_analysis(spot_params[:image])
+      if result
+        if @spot.update(spot_params)
+          redirect_to spot_path(@spot), notice: "シェア内容の更新に成功しました。"
+        else
+          flash.now[:alert] = "シェア内容の更新に失敗しました。"
+          render :edit
+        end
+      else
+        flash.now[:alert] = "画像が不適切です。"
+        render :edit
+      end
     else
-      render :edit
+      if @spot.update(spot_params)
+         redirect_to spot_path(@spot), notice: "シェア内容の更新に成功しました。"
+      else
+          flash.now[:alert] = "必須項目を入力してください。"
+         render :edit
+      end
     end
   end
 
