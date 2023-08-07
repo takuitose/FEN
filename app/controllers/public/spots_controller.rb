@@ -16,8 +16,16 @@ class Public::SpotsController < ApplicationController
 
   def create
     @spot = Spot.new(spot_params)
+    genres = Vision.get_image_data(spot_params[:image])
     @spot.member_id = current_member.id
-    @spot.save! ? (redirect_to spot_path(@spot)) : (redirect_to spots_path)
+    if @spot.save
+      genres.each do |genre|
+        @spot.genres.create(name: genre)
+      end
+      redirect_to spot_path(@spot)
+    else
+      render :new
+    end
   end
 
   def edit

@@ -1,6 +1,7 @@
 class Spot < ApplicationRecord
   belongs_to :member
   belongs_to :tag
+  has_many :genres, dependent: :destroy
   has_many :favorites, dependent: :destroy
   has_many :comments, dependent: :destroy
 
